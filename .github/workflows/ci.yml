@@ -1,0 +1,22 @@
+name: Testing
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test_api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run API unit tests
+        run: |
+          pip3 install --user -r requirements.txt
+          python3 -m unittest -v test.py
+        shell: bash
+
