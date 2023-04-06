@@ -6,6 +6,11 @@ from model import CreditModel, CustomerData
 app = FastAPI()
 model = CreditModel()
 
+# Home page of the app
+@app.get("/")
+def index():
+    return "Hi, my name is Gilles Takam and welcome to my API for predicting the probability of defaulting of the customers of Home Risk Credit"
+
 # Expose the prediction functionality, make a prediction from the passed
 # JSON data and return the probability of defaulting with the confidence
 @app.post("/predict")
